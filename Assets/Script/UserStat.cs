@@ -2,17 +2,17 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UserStat : MonoBehaviour
+public class PlayerStat : MonoBehaviour
 {
-    int trainHPMax = 100;
+    int trainHPMax = 10000;
 
-    public static UserStat Instance;
+    public static PlayerStat Instance;
 
     public Text creditText;
     public GameObject trainHPUI;
     public GameObject trainHPText;
 
-    int credit = 1000;
+    int credit = 0;
     int trainHP;
 
     void Awake()

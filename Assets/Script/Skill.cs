@@ -27,12 +27,6 @@ public class Skill : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.A) && remainTime == 0)
-        {
-            SkillRun();
-            remainTime = cooltime;
-        }
-
         if (remainTime > 0)
         {
             remainTime -= Time.deltaTime;
@@ -43,6 +37,12 @@ public class Skill : MonoBehaviour
             }
         }
         cooltimeImage.fillAmount = remainTime / cooltime;
+
+        if (Input.GetKey(KeyCode.A) && remainTime == 0)
+        {
+            SkillRun();
+            remainTime = cooltime;
+        }
     }
 
     void SkillRun()
@@ -56,7 +56,7 @@ public class Skill : MonoBehaviour
         {
             GameObject bulletBuffer = Instantiate(bullet, fromPosition, Quaternion.Euler(0, 0, angle));
 
-            bulletBuffer.GetComponent<Bullet>().Damage = 100;
+            bulletBuffer.GetComponent<Bullet>().Damage = 50;
 
             Rigidbody2D rb = bulletBuffer.GetComponent<Rigidbody2D>();
             rb.linearVelocity = (rb.transform.up * 2000f);
@@ -88,9 +88,9 @@ public class Skill : MonoBehaviour
 
     public void Skill1UpgradeButton()
     {
-        if (UserStat.Instance.CREDIT >= requireCreditList[requireCreditIndex])
+        if (PlayerStat.Instance.CREDIT >= requireCreditList[requireCreditIndex])
         {
-            UserStat.Instance.CREDIT -= requireCreditList[requireCreditIndex];
+            PlayerStat.Instance.CREDIT -= requireCreditList[requireCreditIndex];
             skillLevel += 1;
             SkillDataUpdate();
         }
