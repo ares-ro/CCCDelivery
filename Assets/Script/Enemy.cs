@@ -50,10 +50,15 @@ public class Enemy : MonoBehaviour
             if (hp <= 0)
             {
                 PlayerStat.Instance.CREDIT += gainCredit;
-                transform.DOKill();
-                Destroy(gameObject);
+                GetComponent<Animator>().SetBool("isDestroy", true);
             }
         }
+    }
+
+    public void Destroy()
+    {
+        transform.DOKill();
+        Destroy(gameObject);
     }
 
     IEnumerator Shot()
