@@ -7,18 +7,19 @@ using UnityEngine.UI;
 public class Skill : MonoBehaviour
 {
     List<int> requireCreditList = new List<int>() { 0, 200, 500 };
-    Vector2 startPosition = new Vector2(337f, -162f);
+    Vector2 startPosition = new Vector2(167f, -285f);
+
     float cooltime = 0.5f;
+
+    float remainTime = 0f;
+    int skillLevel = 1;
+    int requireCreditIndex = 0;
 
     public Image cooltimeImage;
     public GameObject bullet;
     public Text levelText;
     public Text requireCreditText;
     public Button skillButton;
-
-    float remainTime = 0f;
-    int skillLevel = 1;
-    int requireCreditIndex = 0;
 
     void Start()
     {
@@ -38,7 +39,7 @@ public class Skill : MonoBehaviour
         }
         cooltimeImage.fillAmount = remainTime / cooltime;
 
-        if (Input.GetKey(KeyCode.A) && remainTime == 0)
+        if (Input.GetKey(KeyCode.A) && remainTime == 0 && skillLevel != 0)
         {
             SkillRun();
             remainTime = cooltime;
@@ -59,9 +60,18 @@ public class Skill : MonoBehaviour
             bulletBuffer.GetComponent<Bullet>().Damage = 50;
 
             Rigidbody2D rb = bulletBuffer.GetComponent<Rigidbody2D>();
-            rb.linearVelocity = (rb.transform.up * 2000f);
+            rb.linearVelocity = (rb.transform.up * 1500f);
         }
         else if (skillLevel == 2)
+        {
+            GameObject bulletBuffer = Instantiate(bullet, fromPosition, Quaternion.Euler(0, 0, angle));
+
+            bulletBuffer.GetComponent<Bullet>().Damage = 75;
+
+            Rigidbody2D rb = bulletBuffer.GetComponent<Rigidbody2D>();
+            rb.linearVelocity = (rb.transform.up * 2000f);
+        }
+        else if (skillLevel == 3)
         {
             GameObject bulletBuffer = Instantiate(bullet, fromPosition, Quaternion.Euler(0, 0, angle));
 
@@ -70,23 +80,9 @@ public class Skill : MonoBehaviour
             Rigidbody2D rb = bulletBuffer.GetComponent<Rigidbody2D>();
             rb.linearVelocity = (rb.transform.up * 2000f);
         }
-        else if (skillLevel == 3)
-        {
-            float[] angles = { -10, 0, 10 };
-
-            for (int i = 0; i < angles.Length; i++)
-            {
-                GameObject bulletBuffer = Instantiate(bullet, fromPosition, Quaternion.Euler(0, 0, angle + angles[i]));
-
-                bulletBuffer.GetComponent<Bullet>().Damage = 100;
-
-                Rigidbody2D rb = bulletBuffer.GetComponent<Rigidbody2D>();
-                rb.linearVelocity = (rb.transform.up * 2000f);
-            }
-        }
     }
 
-    public void Skill1UpgradeButton()
+    public void SkillUpgradeButton()
     {
         if (PlayerStat.Instance.CREDIT >= requireCreditList[requireCreditIndex])
         {

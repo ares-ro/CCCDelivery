@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    int hpMax = 300;
-    int gainCredit = 10;
+    int hpMax = 250;
+    int gainCredit = 500;
     
     public GameObject HPUI;
     public Transform targetTransform;
@@ -16,9 +16,6 @@ public class Enemy : MonoBehaviour
 
     Vector2 minRange = new Vector2(-1700, -960);
     Vector2 maxRange = new Vector2(1700, -700);
-
-    Sequence seq;
-
 
     void Start()
     {

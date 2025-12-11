@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public Animation bulletHitAnimation;
-
     public int Damage;
 
     float destroyTime = 5f;
@@ -32,7 +30,6 @@ public class Bullet : MonoBehaviour
         {
             collision.gameObject.GetComponent<Enemy>().HP -= Damage;
             Destroy(gameObject);
-            //bulletHitAnimation.Play();
         }
     }
 }
