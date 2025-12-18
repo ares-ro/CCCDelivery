@@ -104,7 +104,7 @@ Transform:
   m_GameObject: {fileID: 2497127461834978398}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 90, z: 0}
+  m_LocalPosition: {x: 0, y: 81.84, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -246,7 +246,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 120
+      scalar: 100
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5091,11 +5091,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8446163507010688071}
-  - component: {fileID: 326886770784581450}
+  - component: {fileID: 7000589801643285693}
   - component: {fileID: 2544652803868013088}
   - component: {fileID: 8129843786606505192}
   m_Layer: 0
-  m_Name: Enemy1
+  m_Name: Enemy3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5119,7 +5119,7 @@ Transform:
   - {fileID: 4773684352595422354}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &326886770784581450
+--- !u!114 &7000589801643285693
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5128,15 +5128,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4849206238914290479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25a3e1cfc48154d499d86d02da16efce, type: 3}
+  m_Script: {fileID: 11500000, guid: c81c2f5f0cbb721449de7eccf6924231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 5
   gainCredit: 500
-  projectile: {fileID: 2573145562231359110, guid: 5ff22f0c779df394cb3a14e562de1e8f, type: 3}
-  damage: 1
-  projectileSpeed: 1000
-  fireRepeat: 2
+  projectile: {fileID: 2573145562231359110, guid: 13520e41770386740b9797e8708f1ef4, type: 3}
+  damage: 5
+  projectileSpeed: 3000
+  fireRepeat: 0.5
   minRange: {x: -1700, y: -960}
   maxRange: {x: 1700, y: -700}
   hpUiElapsed: {fileID: 6406868892824682850}
@@ -5176,7 +5176,7 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 10, y: 100}
+  m_Offset: {x: 10.83, y: 100}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -5188,9 +5188,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -37.61933, y: 86.5966}
-      - {x: -68.23052, y: 24.621391}
-      - {x: -181.2561, y: 45.634216}
+    - - {x: -16.881104, y: 6.1019287}
+      - {x: -181.2561, y: 45.634212}
       - {x: -202.31921, y: -67.49304}
       - {x: -155.61658, y: -95.783936}
       - {x: -104.55151, y: -82.88287}
@@ -5208,11 +5207,10 @@ PolygonCollider2D:
       - {x: 186.52942, y: -13.187622}
       - {x: 153.9613, y: 9.824951}
       - {x: 124.093506, y: 8.156189}
-      - {x: 115.9601, y: 74.94408}
       - {x: 63.264893, y: 105.336}
-      - {x: 28.565748, y: 158.11053}
-      - {x: -19.028078, y: 164.15253}
-      - {x: -49.201347, y: 137.9306}
+      - {x: 49.610596, y: 94.13422}
+      - {x: 46.631836, y: 71.555176}
+      - {x: 66.1244, y: 41.96612}
   m_UseDelaunayMesh: 0
 --- !u!95 &8129843786606505192
 Animator:
@@ -5312,7 +5310,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4801227835787818748, guid: a58d9b1c019eabe4ba54a8334192629d, type: 3}
+  m_Sprite: {fileID: 2302870733942359475, guid: 0ca09d6aa16857c4cbf73b3656d22365, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

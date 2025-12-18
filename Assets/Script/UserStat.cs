@@ -47,7 +47,6 @@ public class PlayerStat : MonoBehaviour
             trainHP = value;
             trainHPUI.GetComponent<Image>().fillAmount = (float)trainHP / trainHPMax;
             trainHPText.GetComponent<Text>().text = ((float)trainHP / trainHPMax * 100).ToString("F1") + "%";
-            Debug.Log(trainHP);
         }
     }
 }
