@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 1
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -124,12 +124,12 @@ TextureImporter:
       name: enemy6_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 3582
-        width: 468
-        height: 339
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 3584
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,12 +146,12 @@ TextureImporter:
       name: enemy6_1
       rect:
         serializedVersion: 2
-        x: 534
-        y: 3582
-        width: 468
-        height: 339
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 512
+        y: 3584
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: enemy6_2
       rect:
         serializedVersion: 2
-        x: 1046
-        y: 3582
-        width: 468
-        height: 339
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1024
+        y: 3584
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -190,12 +190,12 @@ TextureImporter:
       name: enemy6_3
       rect:
         serializedVersion: 2
-        x: 1558
-        y: 3582
-        width: 468
-        height: 339
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1536
+        y: 3584
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -212,12 +212,12 @@ TextureImporter:
       name: enemy6_4
       rect:
         serializedVersion: 2
-        x: 2070
-        y: 3582
-        width: 468
-        height: 339
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2048
+        y: 3584
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -234,12 +234,12 @@ TextureImporter:
       name: enemy6_5
       rect:
         serializedVersion: 2
-        x: 2582
-        y: 3582
-        width: 468
-        height: 339
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2560
+        y: 3584
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -256,12 +256,12 @@ TextureImporter:
       name: enemy6_6
       rect:
         serializedVersion: 2
-        x: 3094
-        y: 3582
-        width: 468
-        height: 339
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3072
+        y: 3584
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -278,12 +278,12 @@ TextureImporter:
       name: enemy6_7
       rect:
         serializedVersion: 2
-        x: 3606
-        y: 3582
-        width: 468
-        height: 339
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3584
+        y: 3584
+        width: 512
+        height: 512
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6f102188d39554747b1047906a1f7249
     internalID: 0
     vertices: []
     indices: 
@@ -312,12 +312,20 @@ TextureImporter:
     nameFileIdTable:
       enemy6_0: -1622033565223678945
       enemy6_1: 267346444617739648
+      enemy6_10: -1840521548
+      enemy6_11: -1086069577
+      enemy6_12: -1401080849
+      enemy6_13: 350106222
+      enemy6_14: -1222391102
+      enemy6_15: -390800849
       enemy6_2: -4884654223603973472
       enemy6_3: -8489690571236752406
       enemy6_4: -7399007358743638787
       enemy6_5: 9150533278491413914
       enemy6_6: -8546602237805768969
       enemy6_7: -7865803551631029497
+      enemy6_8: 77680918
+      enemy6_9: -722143737
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

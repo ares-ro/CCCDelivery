@@ -5133,12 +5133,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 0
   gainCredit: 0
-  minRange: {x: 0, y: 0}
-  maxRange: {x: 0, y: 0}
   projectile: {fileID: 0}
   damage: 0
   projectileSpeed: 0
   fireRepeat: 0
+  minRange: {x: 0, y: 0}
+  maxRange: {x: 0, y: 0}
   hpUiElapsed: {fileID: 6406868892824682850}
   destroyEffect: {fileID: 8417900525527060525}
   targetTransform: {fileID: 0}
@@ -5176,7 +5176,7 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 100}
+  m_Offset: {x: 10, y: 100}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -5310,12 +5310,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4801227835787818748, guid: 612d9e24a0fd60748958204fc49f67a0, type: 3}
+  m_Sprite: {fileID: 4801227835787818748, guid: a58d9b1c019eabe4ba54a8334192629d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 390, y: 203}
+  m_Size: {x: 512, y: 512}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

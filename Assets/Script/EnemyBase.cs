@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using DG.Tweening;
 using Unity.VisualScripting;
@@ -22,14 +23,23 @@ public class EnemyBase : MonoBehaviour
     public ParticleSystem destroyEffect;
     public Transform targetTransform;
 
-    int hp;
+    protected int hp;
     bool isDestroying = false;
 
-    void Start()
+    Queue<GameObject> projectilePool = new Queue<GameObject>();
+    int poolSize = 20;
+
+    public virtual void Start()
     {
+        for (int i = 0; i < poolSize; i++)
+        {
+            GameObject projectileBuffer = Instantiate(projectile);
+            projectileBuffer.SetActive(false);
+            projectilePool.Enqueue(projectileBuffer);
+        }
+
         hp = maxHp;
         StartCoroutine(Shot());
-
         MoveRandom();
     }
 
@@ -43,7 +53,7 @@ public class EnemyBase : MonoBehaviour
                 hpUiElapsed.GetComponent<Image>().fillAmount = (float)hp / maxHp;
 
                 isDestroying = true;
-                PlayerStat.Instance.CREDIT += gainCredit;
+                PlayerStat.Instance.GainCredit(gainCredit);
                 StartCoroutine(DestroySequence());
             }
             else
@@ -65,7 +75,7 @@ public class EnemyBase : MonoBehaviour
     public virtual void MoveRandom()
     {
         Vector2 targetPos = new Vector2(Random.Range(minRange.x, maxRange.x), Random.Range(minRange.y, maxRange.y));
-        transform.DOMove(targetPos, Random.Range(3f, 10f)).SetEase(Ease.InOutSine).OnComplete(MoveRandom);
+        transform.DOMove(targetPos, Random.Range(5f, 10f)).SetEase(Ease.InOutSine).OnComplete(MoveRandom);
     }
 
     public virtual IEnumerator Shot()
@@ -77,10 +87,16 @@ public class EnemyBase : MonoBehaviour
             Vector2 direction = (targetPosition - fromPosition).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
 
-            GameObject bulletBuffer = Instantiate(projectile, fromPosition, Quaternion.Euler(0, 0, angle));
-            bulletBuffer.GetComponent<EnemyProjectile>().Damage = damage;
+            GameObject projectileBuffer = projectilePool.Dequeue();
+            projectilePool.Enqueue(projectileBuffer);
 
-            Rigidbody2D rb = bulletBuffer.GetComponent<Rigidbody2D>();
+            projectileBuffer.transform.position = fromPosition;
+            projectileBuffer.transform.rotation = Quaternion.Euler(0, 0, angle);
+            projectileBuffer.GetComponent<EnemyProjectile>().Damage = damage;
+
+            projectileBuffer.SetActive(true);
+
+            Rigidbody2D rb = projectileBuffer.GetComponent<Rigidbody2D>();
             rb.linearVelocity = rb.transform.up * projectileSpeed;
 
             yield return new WaitForSeconds(fireRepeat);

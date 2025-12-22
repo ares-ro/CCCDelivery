@@ -18,7 +18,7 @@ public class EnemyProjectile : MonoBehaviour
 
             if (destroyTime <= 0)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
     }
@@ -27,8 +27,9 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (collision.tag == "Train")
         {
-            PlayerStat.Instance.TRAINHP -= Damage;
-            Destroy(gameObject);
+            PlayerStat.Instance.TakeDamage(Damage);
+            gameObject.SetActive(false);
+
         }
     }
 }

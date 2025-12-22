@@ -5133,7 +5133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 5
   gainCredit: 500
-  projectile: {fileID: 2573145562231359110, guid: 5ff22f0c779df394cb3a14e562de1e8f, type: 3}
+  projectile: {fileID: 2573145562231359110, guid: 6a545d4fe82ad8a428ae3b81486f00cc, type: 3}
   damage: 1
   projectileSpeed: 1000
   fireRepeat: 2

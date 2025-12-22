@@ -78,9 +78,9 @@ public class SkillUIBase : MonoBehaviour
 
     public void SkillUpgradeButton()
     {
-        if (PlayerStat.Instance.CREDIT >= levelStatData[skillLevel].credit)
+        if (PlayerStat.Instance.Credit >= levelStatData[skillLevel].credit)
         {
-            PlayerStat.Instance.CREDIT -= levelStatData[skillLevel].credit;
+            PlayerStat.Instance.GainCredit(-levelStatData[skillLevel].credit);
             skillLevel += 1;
             SkillDataUpdate();
         }

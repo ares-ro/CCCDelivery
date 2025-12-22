@@ -5133,7 +5133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 5
   gainCredit: 500
-  projectile: {fileID: 2573145562231359110, guid: 13520e41770386740b9797e8708f1ef4, type: 3}
+  projectile: {fileID: 2573145562231359110, guid: 6a545d4fe82ad8a428ae3b81486f00cc, type: 3}
   damage: 5
   projectileSpeed: 3000
   fireRepeat: 0.5
@@ -5176,7 +5176,7 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 10.83, y: 100}
+  m_Offset: {x: 10, y: 100}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}

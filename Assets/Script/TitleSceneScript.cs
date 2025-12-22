@@ -26,7 +26,7 @@ public class TitleSceneScript : MonoBehaviour
     {
         //gameStartButton.GetComponent<AudioSource>().time = 0.15f;
         gameStartButton.GetComponent<AudioSource>().Play();
-        //SceneFadeManagement.FadeOut(mainCanvas.transform, "GameScene");
+        SceneFadeManagement.FadeOut(mainCanvas.transform, "GameScene");
 
     }
 }

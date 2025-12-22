@@ -5,27 +5,24 @@ public class Skill4UI : SkillUIBase
     public override void SkillRun()
     {
         Vector2 fromPosition = startPosition;
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = (mousePosition - fromPosition).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
 
         if (skillLevel == 1)
         {
-            GameObject bulletBuffer = Instantiate(projectile, fromPosition, Quaternion.Euler(0, 0, angle));
+            GameObject bulletBuffer = Instantiate(projectile, fromPosition, new Quaternion());
 
-            bulletBuffer.GetComponent<Missle>().Damage = 20;
+            bulletBuffer.GetComponent<Skill4Bullet>().Damage = 20;
         }
         else if (skillLevel == 2)
         {
-            GameObject bulletBuffer = Instantiate(projectile, fromPosition, Quaternion.Euler(0, 0, angle));
+            GameObject bulletBuffer = Instantiate(projectile, fromPosition, new Quaternion());
 
-            bulletBuffer.GetComponent<Missle>().Damage = 30;
+            bulletBuffer.GetComponent<Skill4Bullet>().Damage = 30;
         }
         else if (skillLevel == 3)
         {
-            GameObject bulletBuffer = Instantiate(projectile, fromPosition, Quaternion.Euler(0, 0, angle));
+            GameObject bulletBuffer = Instantiate(projectile, fromPosition, new Quaternion());
 
-            bulletBuffer.GetComponent<Missle>().Damage = 40;
+            bulletBuffer.GetComponent<Skill4Bullet>().Damage = 40;
         }
     }
 }
