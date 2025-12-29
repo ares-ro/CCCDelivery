@@ -6,14 +6,11 @@ public class GameSceneScript : MonoBehaviour
 
     void Start()
     {
-        
+        SceneFadeManagement.FadeIn(mainCanvas);
     }
 
     void Update()
     {
-        if(PlayerStat.Instance.TrainHP == 0)
-        {
-            SceneFadeManagement.FadeOut(mainCanvas, "");
-        }
+
     }
 }

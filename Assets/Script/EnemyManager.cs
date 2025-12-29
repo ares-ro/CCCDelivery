@@ -6,145 +6,47 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public Transform trainTransform;
-    public GameObject enemy1;
-    public GameObject enemy2;
-    public GameObject enemy3;
-    public GameObject enemy4;
-    public GameObject enemy5;
-    public GameObject enemy6;
+    public List<GameObject> enemys = new List<GameObject>();
+    List<float> stayTimeEnemy = new List<float>() { 0, 60, 180, 300, 360, 480 };
 
-    List<Vector2> startPosList = new List<Vector2> 
-    {
-        new Vector2(-2500, -800),
-        new Vector2(2500, -800)
-    };
+    List<Vector2> startPosList = new List<Vector2>();
 
-    float repeatTime = 3f;
-    float elapsedTime;
-
-    Coroutine generate1;
-    Coroutine generate2;
-    Coroutine generate3;
-    Coroutine generate4;
-    Coroutine generate5;
-    Coroutine generate6;
+    float elapsedTime = 0;
 
     void Start()
     {
+        Vector3 setPosition = Camera.main.ViewportToWorldPoint(new Vector3(1.1f, Random.Range(0f, 0.25f), 0f));
+        setPosition.z = 0f;
+        Vector3 setPosition2 = Camera.main.ViewportToWorldPoint(new Vector3(-1.1f, Random.Range(0f, 0.25f), 0f));
+        setPosition2.z = 0f;
+        startPosList.Add(setPosition);
+        startPosList.Add(setPosition2);
 
+        StartCoroutine(InstantiateEnemy(enemys[0], stayTimeEnemy[0], 10f, 5f, 300f));
+        StartCoroutine(InstantiateEnemy(enemys[1], stayTimeEnemy[1], 10f, 5f, 300f));
+        StartCoroutine(InstantiateEnemy(enemys[2], stayTimeEnemy[2], 10f, 5f, 300f));
+        StartCoroutine(InstantiateEnemy(enemys[3], stayTimeEnemy[3], 20f, 15f, 300f));
+        StartCoroutine(InstantiateEnemy(enemys[4], stayTimeEnemy[4], 20f, 15f, 300f));
+        StartCoroutine(InstantiateEnemy(enemys[5], stayTimeEnemy[5], 20f, 15f, 300f));
     }
 
     void Update()
     {
         elapsedTime += Time.deltaTime;
-
-        if (elapsedTime > 0)
-        {
-            if (generate1 == null)
-            {
-                generate1 = StartCoroutine(Generate1());
-            }
-        }
-        if (elapsedTime > 5)
-        {
-            if (generate2 == null)
-            {
-                generate2 = StartCoroutine(Generate2());
-            }
-        }
-        if (elapsedTime > 10)
-        {
-            if (generate3 == null)
-            {
-                generate3 = StartCoroutine(Generate3());
-            }
-        }
-        if (elapsedTime > 15)
-        {
-            if (generate4 == null)
-            {
-                generate4 = StartCoroutine(Generate4());
-            }
-        }
-        if (elapsedTime > 20)
-        {
-            if (generate5 == null)
-            {
-                generate5 = StartCoroutine(Generate5());
-            }
-        }
-        if (elapsedTime > 25)
-        {
-            if (generate6 == null)
-            {
-                generate6 = StartCoroutine(Generate6());
-            }
-        }
+        Debug.Log(elapsedTime.ToString());
     }
 
-    IEnumerator Generate1()
+    IEnumerator InstantiateEnemy(GameObject enemy, float delayTime, float maxRepeatTime, float minRepeatTime, float timeLimitUntil)
     {
+        yield return new WaitUntil(() => elapsedTime > delayTime);
+
         while (true)
         {
-            GameObject enemy1Buffer = Instantiate(enemy1);
-            enemy1Buffer.transform.position = startPosList[Random.Range(0, 2)];
-            enemy1Buffer.GetComponent<EnemyBase>().targetTransform = trainTransform;
+            GameObject enemyBuffer = Instantiate(enemy);
+            enemyBuffer.transform.position = startPosList[Random.Range(0, 2)];
+            enemyBuffer.GetComponent<EnemyBase>().targetTransform = trainTransform;
 
-            yield return new WaitForSeconds(repeatTime);
-        }
-    }
-    IEnumerator Generate2()
-    {
-        while (true)
-        {
-            GameObject enemy1Buffer = Instantiate(enemy2);
-            enemy1Buffer.transform.position = startPosList[Random.Range(0, 2)];
-            enemy1Buffer.GetComponent<EnemyBase>().targetTransform = trainTransform;
-
-            yield return new WaitForSeconds(repeatTime);
-        }
-    }
-    IEnumerator Generate3()
-    {
-        while (true)
-        {
-            GameObject enemy1Buffer = Instantiate(enemy3);
-            enemy1Buffer.transform.position = startPosList[Random.Range(0, 2)];
-            enemy1Buffer.GetComponent<EnemyBase>().targetTransform = trainTransform;
-
-            yield return new WaitForSeconds(repeatTime);
-        }
-    }
-    IEnumerator Generate4()
-    {
-        while (true)
-        {
-            GameObject enemy1Buffer = Instantiate(enemy4);
-            enemy1Buffer.transform.position = startPosList[Random.Range(0, 2)];
-            enemy1Buffer.GetComponent<EnemyBase>().targetTransform = trainTransform;
-
-            yield return new WaitForSeconds(repeatTime);
-        }
-    }
-    IEnumerator Generate5()
-    {
-        while (true)
-        {
-            GameObject enemy1Buffer = Instantiate(enemy5);
-            enemy1Buffer.transform.position = startPosList[Random.Range(0, 2)];
-            enemy1Buffer.GetComponent<EnemyBase>().targetTransform = trainTransform;
-
-            yield return new WaitForSeconds(repeatTime);
-        }
-    }
-    IEnumerator Generate6()
-    {
-        while (true)
-        {
-            GameObject enemy1Buffer = Instantiate(enemy6);
-            enemy1Buffer.transform.position = startPosList[Random.Range(0, 2)];
-            enemy1Buffer.GetComponent<EnemyBase>().targetTransform = trainTransform;
-
+            float repeatTime = Mathf.Lerp(maxRepeatTime, minRepeatTime, Mathf.Clamp01((elapsedTime - delayTime) / timeLimitUntil));
             yield return new WaitForSeconds(repeatTime);
         }
     }

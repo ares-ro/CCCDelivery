@@ -13,21 +13,21 @@ public class Skill3UI : SkillUIBase
         {
             GameObject bulletBuffer = Instantiate(projectile, fromPosition, Quaternion.Euler(0, 0, angle));
 
-            bulletBuffer.GetComponent<Skill3Bullet>().Damage = 10;
+            bulletBuffer.GetComponent<Skill3Bullet>().Damage = 40;
             bulletBuffer.GetComponent<Skill3Bullet>().Fire(1500f);
         }
         else if (skillLevel == 2)
         {
             GameObject bulletBuffer = Instantiate(projectile, fromPosition, Quaternion.Euler(0, 0, angle));
 
-            bulletBuffer.GetComponent<Skill3Bullet>().Damage = 20;
+            bulletBuffer.GetComponent<Skill3Bullet>().Damage = 70;
             bulletBuffer.GetComponent<Skill3Bullet>().Fire(2000f);
         }
         else if (skillLevel == 3)
         {
             GameObject bulletBuffer = Instantiate(projectile, fromPosition, Quaternion.Euler(0, 0, angle));
 
-            bulletBuffer.GetComponent<Skill3Bullet>().Damage = 30;
+            bulletBuffer.GetComponent<Skill3Bullet>().Damage = 120;
             bulletBuffer.GetComponent<Skill3Bullet>().Fire(2000f);
         }
     }

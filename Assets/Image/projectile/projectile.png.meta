@@ -112,10 +112,10 @@ TextureImporter:
       name: projectile_0
       rect:
         serializedVersion: 2
-        x: 115
+        x: 112
         y: 0
-        width: 26
-        height: 32
+        width: 32
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: projectile_1
       rect:
         serializedVersion: 2
-        x: 371
+        x: 368
         y: 0
-        width: 26
-        height: 23
+        width: 31
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +156,10 @@ TextureImporter:
       name: projectile_2
       rect:
         serializedVersion: 2
-        x: 630
+        x: 627
         y: 0
-        width: 20
-        height: 34
+        width: 26
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,10 +178,10 @@ TextureImporter:
       name: projectile_3
       rect:
         serializedVersion: 2
-        x: 873
+        x: 874
         y: 0
-        width: 47
-        height: 131
+        width: 44
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0ce5495e68bff254ab512fe957fd7323
     internalID: 0
     vertices: []
     indices: 

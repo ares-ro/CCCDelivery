@@ -528,7 +528,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1435, y: 283}
+  m_AnchoredPosition: {x: 1435, y: 260}
   m_SizeDelta: {x: 730, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &128787583
@@ -850,7 +850,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: test
+  m_Text: QM45
 --- !u!222 &153906504
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2061,12 +2061,14 @@ MonoBehaviour:
   skillKey: 115
   skillLevel: 0
   levelStatData:
-  - credit: 0
-    cooltime: 1
-  - credit: 10
-    cooltime: 1
-  - credit: 20
-    cooltime: 1
+  - requireLevelUpCredit: 800
+    cooltime: -1
+  - requireLevelUpCredit: 2500
+    cooltime: 3
+  - requireLevelUpCredit: 5000
+    cooltime: 3
+  - requireLevelUpCredit: -1
+    cooltime: 2
   startPosition: {x: -228, y: -327}
   projectile: {fileID: 7836972196197054524, guid: 896e7ce6950f88c43857f16741811afb, type: 3}
   cooltimeImage: {fileID: 1753590582}
@@ -2504,6 +2506,8 @@ GameObject:
   - component: {fileID: 519420033}
   - component: {fileID: 519420035}
   - component: {fileID: 519420036}
+  - component: {fileID: 519420037}
+  - component: {fileID: 519420038}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2573,7 +2577,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2642,12 +2646,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trainTransform: {fileID: 289878459}
-  enemy1: {fileID: 4849206238914290479, guid: edbc54c05d540da4b9c9a842b9bb3aa6, type: 3}
-  enemy2: {fileID: 4849206238914290479, guid: d0b0e978dd616b14db67dae74aa763ed, type: 3}
-  enemy3: {fileID: 4849206238914290479, guid: 3cd1c8be9d5c8da43bc8a690486a295b, type: 3}
-  enemy4: {fileID: 4849206238914290479, guid: 4e0216cad146757458feaa49faa3e9d7, type: 3}
-  enemy5: {fileID: 4849206238914290479, guid: 8047a275e43c68543ac88579dc67419a, type: 3}
-  enemy6: {fileID: 4849206238914290479, guid: 29689e6d1a8e6c445acfa4d83036c862, type: 3}
+  enemys:
+  - {fileID: 4849206238914290479, guid: edbc54c05d540da4b9c9a842b9bb3aa6, type: 3}
+  - {fileID: 4849206238914290479, guid: d0b0e978dd616b14db67dae74aa763ed, type: 3}
+  - {fileID: 4849206238914290479, guid: 3cd1c8be9d5c8da43bc8a690486a295b, type: 3}
+  - {fileID: 4849206238914290479, guid: 4e0216cad146757458feaa49faa3e9d7, type: 3}
+  - {fileID: 4849206238914290479, guid: 8047a275e43c68543ac88579dc67419a, type: 3}
+  - {fileID: 4849206238914290479, guid: 29689e6d1a8e6c445acfa4d83036c862, type: 3}
 --- !u!82 &519420034
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2787,6 +2792,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2ac503f03e5be49bec8975c34d8b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCanvas: {fileID: 1973824409}
+--- !u!114 &519420037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73dc08c03c245804dba4296cdb0b2a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &519420038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff813de9a73d414b87325cadc479797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creditText: {fileID: 797736132}
+  trainHPUI: {fileID: 1049414694}
+  trainHPText: {fileID: 2018345028}
+  elapsedTimeUI: {fileID: 525687975}
   mainCanvas: {fileID: 1973824409}
 --- !u!1 &525687975
 GameObject:
@@ -5020,12 +5054,14 @@ MonoBehaviour:
   skillKey: 97
   skillLevel: 1
   levelStatData:
-  - credit: 0
+  - requireLevelUpCredit: -1
+    cooltime: -1
+  - requireLevelUpCredit: 400
     cooltime: 1
-  - credit: 10
-    cooltime: 1
-  - credit: 20
-    cooltime: 1
+  - requireLevelUpCredit: 1200
+    cooltime: 0.75
+  - requireLevelUpCredit: -1
+    cooltime: 0.75
   startPosition: {x: -228, y: -327}
   projectile: {fileID: 7836972196197054524, guid: 401f42c304f6aea468a0d97a4c0ed5c5, type: 3}
   cooltimeImage: {fileID: 669115997}
@@ -5239,12 +5275,14 @@ MonoBehaviour:
   skillKey: 102
   skillLevel: 0
   levelStatData:
-  - credit: 0
-    cooltime: 1
-  - credit: 10
-    cooltime: 1
-  - credit: 20
-    cooltime: 0.2
+  - requireLevelUpCredit: 10000
+    cooltime: -1
+  - requireLevelUpCredit: 20000
+    cooltime: 7
+  - requireLevelUpCredit: 30000
+    cooltime: 5
+  - requireLevelUpCredit: -1
+    cooltime: 3
   startPosition: {x: -583, y: -170}
   projectile: {fileID: 7836972196197054524, guid: 05ff50e8e701cb149ba775c80ccb8788, type: 3}
   cooltimeImage: {fileID: 1184511620}
@@ -6076,7 +6114,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: test2
+  m_Text: TTEM
 --- !u!222 &1542817987
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7226,7 +7264,6 @@ GameObject:
   - component: {fileID: 1973824408}
   - component: {fileID: 1973824407}
   - component: {fileID: 1973824406}
-  - component: {fileID: 1973824410}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7263,11 +7300,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 3840, y: 2160}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -7319,22 +7356,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1973824410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973824404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ff813de9a73d414b87325cadc479797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creditText: {fileID: 797736132}
-  trainHPUI: {fileID: 1049414694}
-  trainHPText: {fileID: 2018345028}
-  elapsedTimeUI: {fileID: 525687975}
 --- !u!1 &2010737085
 GameObject:
   m_ObjectHideFlags: 0
@@ -7635,11 +7656,13 @@ MonoBehaviour:
   skillKey: 100
   skillLevel: 0
   levelStatData:
-  - credit: 0
-    cooltime: 1
-  - credit: 10
-    cooltime: 1
-  - credit: 20
+  - requireLevelUpCredit: 5000
+    cooltime: -1
+  - requireLevelUpCredit: 12000
+    cooltime: 0.5
+  - requireLevelUpCredit: 30000
+    cooltime: 0.25
+  - requireLevelUpCredit: -1
     cooltime: 0.1
   startPosition: {x: -453, y: -179}
   projectile: {fileID: 7836972196197054524, guid: 0dadebd000d61a246b54bab7de316ecd, type: 3}

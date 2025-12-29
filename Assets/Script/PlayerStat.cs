@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class PlayerStat : MonoBehaviour
 {
-    float trainHPMax = 100;
-    float elapsedTimeMax = 100;
+    int trainHPMax = 1000000;
+    float elapsedTimeMax = 600f;
 
     public static PlayerStat Instance;
 
@@ -15,30 +15,35 @@ public class PlayerStat : MonoBehaviour
     public GameObject elapsedTimeUI;
 
     int credit = 0;
-    float trainHP;
-    float currentElapsedTime;
+    int trainHP;
+    float currentElapsedTime = 0;
 
     public Transform mainCanvas;
 
     void Awake()
     {
         Instance = this;
-        Instance.creditText.text = Instance.credit.ToString() + " Credit";
 
+        creditText.text = credit.ToString() + " Credit";
         trainHP = trainHPMax;
         currentElapsedTime = elapsedTimeMax;
     }
 
     void Update()
     {
+        if (isLoadingEndScene == true)
+        {
+            return;
+        }
         if (currentElapsedTime > 0)
         {
             currentElapsedTime -= Time.deltaTime;
 
-            if(currentElapsedTime < 0)
+            if (currentElapsedTime < 0)
             {
                 currentElapsedTime = 0;
-                ScoreData.trainHP = trainHP;
+                ScoreData.trainHP = (float)trainHP / trainHPMax;
+                isLoadingEndScene = true;
                 SceneFadeManagement.FadeOut(mainCanvas, "EndScene");
             }
         }
@@ -50,7 +55,7 @@ public class PlayerStat : MonoBehaviour
         get { return credit; }
     }
 
-    public float TrainHP
+    public int TrainHP
     {
         get { return trainHP; }
     }
@@ -58,11 +63,17 @@ public class PlayerStat : MonoBehaviour
     public void GainCredit(int credit)
     {
         this.credit += credit;
-        creditText.text = credit.ToString() + " Credit";
+        creditText.text = this.credit.ToString() + " Credit";
     }
 
-    public void TakeDamage(float damage)
+    bool isLoadingEndScene = false;
+
+    public void TakeDamage(int damage)
     {
+        if (isLoadingEndScene == true)
+        {
+            return;
+        }
         if (trainHP - damage > 0)
         {
             trainHP -= damage;
@@ -70,10 +81,11 @@ public class PlayerStat : MonoBehaviour
         else
         {
             trainHP = 0;
-            ScoreData.trainHP = trainHP;
+            ScoreData.trainHP = (float)trainHP / trainHPMax;
+            isLoadingEndScene = true;
             SceneFadeManagement.FadeOut(mainCanvas, "EndScene");
         }
-        trainHPUI.GetComponent<Image>().fillAmount = trainHP / trainHPMax;
-        trainHPText.GetComponent<Text>().text = (trainHP / trainHPMax * 100).ToString("F1") + "%";
+        trainHPUI.GetComponent<Image>().fillAmount = (float)trainHP / trainHPMax;
+        trainHPText.GetComponent<Text>().text = ((float)trainHP / trainHPMax * 100).ToString("F2") + "%";
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Setting;
 
 public class SplashSceneScript : MonoBehaviour
 {

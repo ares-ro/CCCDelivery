@@ -13,15 +13,20 @@ public class Skill2UI : SkillUIBase
         {
             GameObject bulletBuffer = Instantiate(projectile, fromPosition, Quaternion.Euler(0, 0, angle));
 
-            bulletBuffer.GetComponent<Skill2Bullet>().Damage = 75;
+            bulletBuffer.GetComponent<Skill2Bullet>().Damage = 60;
             bulletBuffer.GetComponent<Skill2Bullet>().Fire(1000f);
         }
         else if (skillLevel == 2)
         {
-            GameObject bulletBuffer = Instantiate(projectile, fromPosition, Quaternion.Euler(0, 0, angle));
+            float[] angles = { -5, 0, 5 };
 
-            bulletBuffer.GetComponent<Skill2Bullet>().Damage = 100;
-            bulletBuffer.GetComponent<Skill2Bullet>().Fire(1000f);
+            for (int i = 0; i < angles.Length; i++)
+            {
+                GameObject bulletBuffer = Instantiate(projectile, fromPosition, Quaternion.Euler(0, 0, angle + angles[i]));
+
+                bulletBuffer.GetComponent<Skill2Bullet>().Damage = 100;
+                bulletBuffer.GetComponent<Skill2Bullet>().Fire(2000f);
+            }
         }
         else if (skillLevel == 3)
         {
@@ -31,7 +36,7 @@ public class Skill2UI : SkillUIBase
             {
                 GameObject bulletBuffer = Instantiate(projectile, fromPosition, Quaternion.Euler(0, 0, angle + angles[i]));
 
-                bulletBuffer.GetComponent<Skill2Bullet>().Damage = 75;
+                bulletBuffer.GetComponent<Skill2Bullet>().Damage = 150;
                 bulletBuffer.GetComponent<Skill2Bullet>().Fire(2000f);
             }
         }

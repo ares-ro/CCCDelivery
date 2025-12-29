@@ -18,19 +18,6 @@ public class SkillUIBase : MonoBehaviour
 
     float remainTime = 0f;
 
-    [System.Serializable]
-    public class LevelStatData
-    {
-        public int credit;
-        public float cooltime;
-        
-        public LevelStatData(int credit, float cooltime)
-        {
-            this.credit = credit;
-            this.cooltime = cooltime;
-        }
-    }
-
     void Start()
     {
         SkillDataUpdate();
@@ -38,35 +25,30 @@ public class SkillUIBase : MonoBehaviour
 
     void Update()
     {
-        if (remainTime > 0)
-        {
-            remainTime -= Time.deltaTime;
+        remainTime = Mathf.Max(0, remainTime -= Time.deltaTime);
 
-            if (remainTime < 0)
-            {
-                remainTime = 0;
-            }
-        }
+        cooltimeImage.fillAmount = remainTime / levelStatData[skillLevel].cooltime;
 
-        if (skillLevel < levelStatData.Count)
-        {
-            cooltimeImage.fillAmount = remainTime / levelStatData[skillLevel].cooltime;
-        }
-        else
-        {
-            cooltimeImage.fillAmount = remainTime / levelStatData[skillLevel - 1].cooltime;
-        }
+        //if (skillLevel < levelStatData.Count)
+        //{
+        //    cooltimeImage.fillAmount = remainTime / levelStatData[skillLevel].cooltime;
+        //}
+        //else
+        //{
+        //    cooltimeImage.fillAmount = remainTime / levelStatData[skillLevel - 1].cooltime;
+        //}
 
-        if (Input.GetKey(skillKey) & remainTime == 0 & skillLevel != 0)
+        if (Input.GetKey(skillKey) && remainTime == 0 && skillLevel != 0)
         {
-            if (skillLevel < levelStatData.Count)
-            {
-                remainTime = levelStatData[skillLevel].cooltime;
-            }
-            else
-            {
-                remainTime = levelStatData[skillLevel - 1].cooltime;
-            }
+            remainTime = levelStatData[skillLevel].cooltime;
+            //if (skillLevel < levelStatData.Count)
+            //{
+            //    remainTime = levelStatData[skillLevel].cooltime;
+            //}
+            //else
+            //{
+            //    remainTime = levelStatData[skillLevel - 1].cooltime;
+            //}
             SkillRun();
         }
     }
@@ -78,9 +60,9 @@ public class SkillUIBase : MonoBehaviour
 
     public void SkillUpgradeButton()
     {
-        if (PlayerStat.Instance.Credit >= levelStatData[skillLevel].credit)
+        if (PlayerStat.Instance.Credit >= levelStatData[skillLevel].requireLevelUpCredit)
         {
-            PlayerStat.Instance.GainCredit(-levelStatData[skillLevel].credit);
+            PlayerStat.Instance.GainCredit(-levelStatData[skillLevel].requireLevelUpCredit);
             skillLevel += 1;
             SkillDataUpdate();
         }
@@ -88,10 +70,10 @@ public class SkillUIBase : MonoBehaviour
 
     void SkillDataUpdate()
     {
-        if (skillLevel < levelStatData.Count)
+        if (skillLevel < levelStatData.Count - 1)
         {
             levelText.text = "Level " + skillLevel.ToString();
-            requireCreditText.text = levelStatData[skillLevel].credit + "C";
+            requireCreditText.text = levelStatData[skillLevel].requireLevelUpCredit + "C";
         }
         else
         {
@@ -99,5 +81,18 @@ public class SkillUIBase : MonoBehaviour
             levelText.text = "Level " + skillLevel.ToString();
             requireCreditText.text = "-";
         }
+    }
+}
+
+[System.Serializable]
+public class LevelStatData
+{
+    public int requireLevelUpCredit;
+    public float cooltime;
+
+    public LevelStatData(int requireLevelUpCredit, float cooltime)
+    {
+        this.requireLevelUpCredit = requireLevelUpCredit;
+        this.cooltime = cooltime;
     }
 }

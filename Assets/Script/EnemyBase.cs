@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class EnemyBase : MonoBehaviour
 {
-    public int maxHp;
+    public float maxHp;
     public int gainCredit;
     [Space]
     public GameObject projectile;
@@ -23,7 +23,7 @@ public class EnemyBase : MonoBehaviour
     public ParticleSystem destroyEffect;
     public Transform targetTransform;
 
-    protected int hp;
+    protected float hp;
     bool isDestroying = false;
 
     Queue<GameObject> projectilePool = new Queue<GameObject>();
@@ -43,7 +43,7 @@ public class EnemyBase : MonoBehaviour
         MoveRandom();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (isDestroying == false)
         {

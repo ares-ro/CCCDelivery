@@ -112,7 +112,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.12
+  m_Radius: 0.15
 --- !u!82 &1091176370393934967
 AudioSource:
   m_ObjectHideFlags: 0

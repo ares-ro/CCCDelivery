@@ -5131,12 +5131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd7205bdb65f5b438f6b2905fc8b3b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 5
-  gainCredit: 500
+  maxHp: 2500
+  gainCredit: 1500
   projectile: {fileID: 2573145562231359110, guid: 6a545d4fe82ad8a428ae3b81486f00cc, type: 3}
-  damage: 5
+  damage: 300
   projectileSpeed: 3000
-  fireRepeat: 0.2
+  fireRepeat: 0.75
   minRange: {x: -1700, y: -960}
   maxRange: {x: 1700, y: -700}
   hpUiElapsed: {fileID: 6406868892824682850}
@@ -5244,7 +5244,7 @@ Animator:
   m_GameObject: {fileID: 4849206238914290479}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 535e197e14762ac45af92724bf05aa57, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
